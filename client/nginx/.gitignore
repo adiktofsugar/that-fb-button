@@ -2,3 +2,4 @@ node_modules
 nginx.conf
 logs/access.log
 logs/error.log
+nginx.pid

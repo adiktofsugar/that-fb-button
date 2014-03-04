@@ -26,11 +26,11 @@ http {
     listen       80;
     
   	location /media/ {
-      alias <%= base_dir %>frontend/media/;
+      alias <%= base_dir %>target/media/;
     }
   	
     location / {
-      alias <%= base_dir %>frontend/pages/;
+      alias <%= base_dir %>target/pages/;
     }
     
   }
