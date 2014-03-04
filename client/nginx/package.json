@@ -1,0 +1,10 @@
+{
+  "name": "nginx-auto-conf",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt-ejs": "~0.1.0",
+    "load-grunt-tasks": "~0.4.0",
+    "grunt": "~0.4.2",
+    "grunt-nginx": "~0.2.1"
+  }
+}
