@@ -7,4 +7,6 @@ module.exports = function (grunt) {
 	grunt.registerTask('build-css', 'sass:all');
 	grunt.registerTask('build-js', ['concat:vendor']);
 	grunt.registerTask('default', ['clean:media', 'build-pages', 'build-css', 'build-js']);
+
+	grunt.registerTask('dev', ['default', 'watch']);
 };
