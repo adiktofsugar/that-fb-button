@@ -1,0 +1,17 @@
+
+// To overwrite the foundation hide by default
+#login-modal {
+	display: block;
+	visibility: visible;
+	opacity: 1;
+
+	.login-modal__lead {
+		font-size: 150%;
+		vertical-align: middle;
+	}
+
+	.button {
+		margin-bottom: 0;
+		vertical-align: middle;
+	}
+}

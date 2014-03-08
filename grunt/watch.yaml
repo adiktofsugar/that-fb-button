@@ -1,0 +1,21 @@
+pages:
+    files:
+        - pages/**/*.html
+    tasks: build-pages
+
+scss:
+    files:
+        - media/scss/**
+    tasks: build-css
+
+js:
+    files:
+        - media/js/**
+    tasks: build-js
+
+nginxConf:
+    files:
+        - nginx/nginx.conf.ejs
+    tasks:
+        - build-nginx
+        - "nginx:restart"

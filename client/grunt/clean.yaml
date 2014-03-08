@@ -1,4 +1,0 @@
-nginx:
-    - nginx/nginx.conf
-media:
-    - frontend/target

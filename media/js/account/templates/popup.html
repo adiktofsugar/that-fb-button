@@ -1,0 +1,17 @@
+<div id="login-modal" class="reveal-modal">
+  
+  	<div class="text-center">
+  		{% if loginStatus == "loading" %}
+  			<span class="login-modal__lead">Loading...</span>
+  		{% else %}
+			<span class="login-modal__lead">Unfortunately...</span>
+			<button class="js-trigger-login">
+			{% if loginStatus == "not_authorized" %}
+			You have not authorized the app
+			{% else %}
+			You are not logged in.
+			{% endif %}
+			</button>
+		{% endif %}
+	</div>
+</div>

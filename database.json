@@ -1,0 +1,9 @@
+{
+	"dev": {
+		"protocol": "mysql",
+		"driver": "mysql",
+		"user": "root",
+		"password":"",
+		"database":"fb_button"
+	}
+}
