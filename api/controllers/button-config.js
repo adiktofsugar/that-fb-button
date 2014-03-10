@@ -1,6 +1,4 @@
-
-var getButton = function (id, req) {};
-var deleteButton = function (id, req) {};
+var extend = require("extend");
 
 
 var isAuthed = function (req, cb) {
@@ -57,10 +55,9 @@ module.exports = {
 
 		isAuthed(req, function (user) {
 			req.db.models.configs.create([
-			{
-				user_id: user.id,
-				name: body.name
-			}
+			extend({
+				user_id: user.id
+			}, body),
 			], function(err, results) {
 				if (err) {
 					throw err;
@@ -74,14 +71,11 @@ module.exports = {
 
 	update: function (req, res) {
 		var body = req.body;
-		var attributes = {
-			name: body.name
-		};
-
+		
 		isAuthed(req, function (user) {
 			getConfig(req, user, function (config) {
 				console.log("has object", config);
-				config.save( attributes , function (err, config) {
+				config.save( body , function (err, config) {
 					if (err) throw err;
 					res.json(config);
 				});

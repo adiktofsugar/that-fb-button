@@ -1,4 +1,4 @@
-define('index/ApplicationModel',['backbone'], function (Backbone) {
+define('application/ApplicationModel',['backbone'], function (Backbone) {
 
 	return Backbone.Model.extend({
 		sync: function () {}

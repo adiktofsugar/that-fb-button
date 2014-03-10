@@ -1,7 +1,7 @@
-define('index/ApplicationItemView',
+define('application/ApplicationItemView',
 ['marionette'],
 function (Marionette) {
 	return Marionette.ItemView.extend({
-		template: 'index/application-item'
+		template: 'application/application-item'
 	});
 });

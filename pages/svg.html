@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Svg stuff</title>
+		<script src="/media/js/main.js"></script>
+		<script src="/media/js/templates.js"></script>
+
+		<link rel="stylesheet" href="/media/css/vendor.css" />
+		<link rel="stylesheet" href="/media/css/main.css" />
+	</head>
+	<body>
+		<div id="fb-root"></div>
+
+		<div class="row">
+			<div class="large-6 columns">
+				<object id="graphic" type="image/svg+xml" data="/media/assets/test.svg">
+					Your browser does not support SVG</object>
+			</div>
+			<div class="large-6 columns">
+				<div id="graphic-description"></div>
+			</div>
+		</div>
+
+
+		<script>
+		require(['svg/app'], function (app) {
+			app.start();
+		});
+		</script>
+
+
+	</body>
+</html>

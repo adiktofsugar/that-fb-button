@@ -11,7 +11,7 @@ module.exports = function (grunt) {
 				'media/js/vendor/modernizr.js',
 
 				'media/js/vendor/underscore-min.js',
-				'media/js/vendor/backbone-min.js',
+				'media/js/vendor/backbone.js',
 
 				'media/js/vendor/Backbone.ModelBinder.js',
 
@@ -36,6 +36,35 @@ module.exports = function (grunt) {
 		templates: {
 			src: 'target/templates/*.js',
 			dest: 'target/media/js/templates.js'
+		},
+
+		consumer: {
+			src: [
+				'target/consumer/intro.js',
+
+
+				'consumer/vendor/utils.js',
+				'consumer/vendor/Sizzle.js',
+				'consumer/vendor/attributes.js',
+				'consumer/vendor/traversing.js',
+
+				'consumer/vendor/zepto-event.js',
+				
+				'consumer/vendor/Events.js',
+				'consumer/vendor/View.js',
+
+				'consumer/vendor/ajax.js',
+
+				
+				'consumer/lib/*.js',
+
+				'consumer/button/Button.js',
+
+				'consumer/main.js',
+
+				'target/consumer/outro.js'
+			],
+			dest: 'target/consumer.js'
 		}
 	};
 };

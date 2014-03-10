@@ -1,6 +1,6 @@
 define('button/ButtonCollection',
-['backbone', 'button/ButtonModel'],
-function (Backbone, ButtonModel) {
+['backbone', 'button/data', 'button/ButtonModel'],
+function (Backbone, buttonData, ButtonModel) {
 
 	return Backbone.Collection.extend({
 		url: '/api/buttons',

@@ -1,11 +1,17 @@
 define('button/ButtonItemView',
-['marionette', 'backbone'],
-function (Marionette, Backbone) {
+['marionette', 'backbone',
+'button/ChangeAppView'],
+function (Marionette, Backbone,
+	ChangeAppView) {
 
-	return Marionette.ItemView.extend({
+	var V = Marionette.ItemView.extend({
 		template: 'button/button-item',
 		editTemplate: 'button/edit-button-item',
 
+		ui: {
+			'appShow': '.js-application-show',
+			'changeApp': '.js-change-application'
+		},
 
 		events: {
 			"submit .js-edit-form": "editFormHandler"
@@ -13,7 +19,9 @@ function (Marionette, Backbone) {
 
 		triggers: {
 			"click .js-edit-button": "edit",
+			"click .js-copy-button": "copy",
 			"click .js-delete-button": "delete",
+			"click .js-change-application-button": "application:change",
 
 			// in edit state
 			"click .js-cancel-edit-button": "edit:cancel",
@@ -21,6 +29,17 @@ function (Marionette, Backbone) {
 
 		initialize: function () {
 			this.modelBinder = new Backbone.ModelBinder();
+		},
+
+		serializeData: function () {
+			var data = V.__super__.serializeData.apply(this, arguments);
+
+			// change config to an array separated by newlines whitespace
+			if (data.config) {
+				data.config = data.config.split(/\n/);	
+			}
+			
+			return data;
 		},
 
 		onShow: function () {
@@ -49,6 +68,13 @@ function (Marionette, Backbone) {
 			this.isEditable = true;
 			this.render();
 		},
+		onCopy: function () {
+			var attributes = this.model.attributes;
+			// take out id...
+			attributes.id = undefined;
+
+			this.model.collection.create( attributes );
+		},
 		onDelete: function () {
 			if(confirm("you sure about that?")) {
 				this.model.destroy();
@@ -61,7 +87,25 @@ function (Marionette, Backbone) {
 			} else {
 				this.modelBinder.unbind();
 			}
+		},
+
+		onApplicationChange: function () {
+			this.ui.appShow.hide();
+			this.ui.changeApp.show();
+
+			if (this.changeAppView) {
+				this.changeAppView.close();
+			}
+
+			this.changeAppView = new ChangeAppView({
+				model: this.model
+			});
+			this.ui.changeApp.html('')
+				.append( this.changeAppView.el );
+			this.changeAppView.render();
 		}
 	});
+
+	return V;
 
 });

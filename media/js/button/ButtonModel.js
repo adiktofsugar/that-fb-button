@@ -2,6 +2,8 @@ define('button/ButtonModel',
 ['backbone'],
 function (Backbone) {
 
-	return Backbone.Model.extend();
+	var M = Backbone.Model.extend({
+	});
+	return M;
 
 });

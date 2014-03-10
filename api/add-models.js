@@ -20,6 +20,12 @@ module.exports = function (db) {
 			require( filepath )(db);
 		});
 
+		// and now the assciations
+		db.models.sites.hasOne('user', db.models.users);
+		db.models.configs.hasOne('user', db.models.users);
+
+		db.models.configs.hasMany('sites', db.models.sites);
+
 	});
 
 };

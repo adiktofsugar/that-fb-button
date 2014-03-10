@@ -2,3 +2,5 @@ nginx:
     - nginx/nginx.conf
 media:
     - target
+consumer:
+    - target/consumer/*.js

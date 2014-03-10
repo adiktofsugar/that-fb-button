@@ -6,11 +6,25 @@
 				<button class="tiny button js-edit-button">Edit</button>
 			</li>
 			<li>
-				<button class="tiny button js-delete-button">Delete</button>
+				<button class="alert tiny button js-delete-button">Delete</button>
+			</li>
+			<li>
+				<button class="tiny button js-copy-button">Copy</button>
 			</li>
 		</ul>
 	</div>
 	<div class="large-7 columns">
-	..config...
+		<div class="js-application-show">
+			<dt>Application</dt>
+			{% if application %}
+				<dd>
+					{{ application }} - 
+					<button class="button js-change-application-button">Change Application</button>
+				</dd>
+			{% else %}
+				<dd><button class="button js-change-application-button">Add To Application</button></dd>
+			{% endif %}
+		</div>
+		<div class="js-change-application"></div>
 	</div>
 </div>

@@ -23,8 +23,22 @@ http {
  
  
   server {
+    listen 80;
+    server_name example.com;
+
+    location / {
+      alias <%= base_dir %>example-site/;
+    }
+  }
+
+  server {
     listen       80;
+    server_name dev.buttontriggers.guru buttontriggers.guru;
     
+    location = /consumer.js {
+      root <%= base_dir %>target/;
+    }
+
     location /api {
       rewrite /api(.*) "$1" break;
       proxy_pass http://localhost:8080;

@@ -1,6 +1,6 @@
-define('index/ApplicationListView',
+define('application/ApplicationListView',
 ['marionette',
-'index/ApplicationItemView', 'index/ApplicationEmptyView'],
+'application/ApplicationItemView', 'application/ApplicationEmptyView'],
 function (Marionette,
 	ApplicationItemView, ApplicationEmptyView) {
 	return Marionette.CollectionView.extend({

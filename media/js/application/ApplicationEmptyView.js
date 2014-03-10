@@ -1,7 +1,7 @@
-define('index/ApplicationEmptyView',
+define('application/ApplicationEmptyView',
 ['marionette'],
 function (Marionette) {
 	return Marionette.ItemView.extend({
-		template: 'index/application-empty'
+		template: 'application/application-empty'
 	});
 });

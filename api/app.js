@@ -19,7 +19,9 @@ server.use(function (req, res, next) {
 	next(req, res);
 });
 
+server.use(restify.queryParser());
 server.use(restify.bodyParser());
+
 server.use( middleware.session );
 server.use( middleware.user );
 server.use( middleware.logging );

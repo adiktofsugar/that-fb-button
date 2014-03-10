@@ -1,6 +1,7 @@
-define('index/ApplicationCollection',
+
+define('application/ApplicationCollection',
 ['underscore', 'backbone',
-'index/ApplicationModel'],
+'application/ApplicationModel'],
 function (_, Backbone, ApplicationModel) {
 
 	return Backbone.Collection.extend({
