@@ -1,9 +1,9 @@
 module.exports = {
-	'build-nginx': ['clean:nginx', 'ejs:nginx'],
+	'build-nginx': ['clean:nginx', 'nunjucks-alt:nginx'],
 	'build-pages': 'copy:pages',
 	'build-css': 'sass:all',
 	'build-js': ['concat:main', 
-		'concat:pages','nunjucks:pages','concat:templates',
+		'concat:pages','nunjucks-alt:pages','concat:templates',
 		'make-require-config'],
 	'build-assets': ['copy:assets'],
 
