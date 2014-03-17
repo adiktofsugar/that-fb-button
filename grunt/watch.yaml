@@ -13,9 +13,14 @@ js:
         - media/js/**
     tasks: build-js
 
+consumer:
+    files:
+        - consumer/**/*.js
+    tasks: build-consumer
+
 nginxConf:
     files:
-        - nginx/nginx.conf.ejs
+        - nginx/**/*.njs
     tasks:
         - build-nginx
         - "nginx:restart"

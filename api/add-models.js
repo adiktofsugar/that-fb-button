@@ -21,10 +21,7 @@ module.exports = function (db) {
 		});
 
 		// and now the assciations
-		db.models.sites.hasOne('user', db.models.users);
-		db.models.configs.hasOne('user', db.models.users);
-
-		db.models.configs.hasMany('sites', db.models.sites);
+		db.models.config.hasOne('user', db.models.user);
 
 	});
 

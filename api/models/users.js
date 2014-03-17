@@ -1,6 +1,6 @@
 module.exports = function (db) {
 
-	db.define('users', {
+	db.define('user', {
 		facebook_id: {type: "text"}	
 	});
 

@@ -5,7 +5,7 @@ var type = dbm.dataType;
 exports.up = function(db, callback) {
 
 	async.series([
-		db.createTable.bind(db, 'users', {
+		db.createTable.bind(db, 'user', {
 			id: {
 				type: 'int',
 				primaryKey: true,
@@ -15,7 +15,7 @@ exports.up = function(db, callback) {
 				type: 'string'
 			}
 		}),
-		db.createTable.bind(db, 'configs', {
+		db.createTable.bind(db, 'config', {
 			id: {
 				type: 'int',
 				primaryKey: true,
@@ -31,7 +31,7 @@ exports.up = function(db, callback) {
 exports.down = function(db, callback) {
 
 	async.series([
-		db.dropTable.bind(db, 'users'),
-		db.dropTable.bind(db, 'configs')
+		db.dropTable.bind(db, 'user'),
+		db.dropTable.bind(db, 'config')
 	], callback);
 };

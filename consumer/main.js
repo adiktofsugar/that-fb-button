@@ -1,5 +1,8 @@
 (function() {
 
+	var vent = new EventAggregator();
+
+
 	var OK_ATTRIBUTE = "data-fb-button";
 	var BAD_ATTRIBUTE = "data-fb-button-used";
 
@@ -22,7 +25,7 @@
 			
 			_.each(elements, function (element) {
 				processElement(element);
-				cb(elements);
+				cb(element);
 			});
 		}, 250);
 
@@ -32,15 +35,33 @@
 	function addButtons() {
 		findElements(function (element) {
 			var name = attributes.attr(element, BAD_ATTRIBUTE);
-			Button.create(element, name)
-			.render();
+			var button = Button.create(element, name);
+			
+			// All the events go to button:<button event>
+			// with button as the first argument
+			vent.forwardEvents(button, "button");
+
+			button.render();
 		});
 	}
 
+	
 
+	vent.forwardEvents(Facebook.vent, "fb");
+	Facebook.add();
 
-	//addFb();
 	addButtons();
+
+	vent.on("button:error fb:error", function (entity, error) {
+		console.error(error.message, error, entity);
+	});
+
+	window.buttonTriggers = {
+		on: vent.on,
+		off: vent.off,
+
+		fbGetProfile: _.bind(Facebook.getProfile, Facebook)
+	};
 
 
 })();

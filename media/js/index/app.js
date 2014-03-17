@@ -1,8 +1,8 @@
 define('index/app',
 ['marionette','account/app',
-'button/data','button/ButtonListView'],
+'config/data','config/ConfigListView'],
 function (Marionette, account,
-	buttonData, ButtonListView) {
+	configData, ConfigListView) {
 
 	var app = new Marionette.Application();
 
@@ -13,22 +13,22 @@ function (Marionette, account,
 	// models
 	app.addInitializer(account.r(function () {
 
-		buttonData.buttonCollection.fetch();
+		configData.configCollection.fetch();
 
 	}));
 
 	// views
 	app.addInitializer(account.r(function () {
 
-		app.buttonListView = new ButtonListView({
-			collection: buttonData.buttonCollection
+		app.configListView = new ConfigListView({
+			collection: configData.configCollection
 		});
 
 	}));
 
 	app.addInitializer(account.r(function () {
 
-		app.main.show(app.buttonListView);
+		app.main.show(app.configListView);
 
 	}));
 

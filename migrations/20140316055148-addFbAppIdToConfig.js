@@ -2,12 +2,11 @@ var dbm = require('db-migrate');
 var type = dbm.dataType;
 
 exports.up = function(db, callback) {
-	db.addColumn('config', 'config', {
-		type: 'text'
-	
+	db.addColumn('config', 'facebook_app_id', {
+		type: "string"
 	}, callback);
 };
 
 exports.down = function(db, callback) {
-	db.removeColumn('config', 'config', callback);
+	db.removeColumn("config", "facebook_app_id", callback);
 };

@@ -55,11 +55,11 @@ module.exports = function (grunt) {
 
 				'consumer/vendor/ajax.js',
 
-				
-				'consumer/lib/*.js',
+				'consumer/lib/EventAggregator.js',
+				'consumer/lib/!(EventAggregator).js',
 
+				'consumer/mailers/*.js',
 				'consumer/button/Button.js',
-
 				'consumer/main.js',
 
 				'target/consumer/outro.js'

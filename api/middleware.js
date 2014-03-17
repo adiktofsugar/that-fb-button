@@ -24,12 +24,12 @@ module.exports.user = function (req, res, next) {
 
 		if (req.userFbId) {
 
-			req.db.models.users.find({facebook_id: req.userFbId}, function (err, results) {
+			req.db.models.user.find({facebook_id: req.userFbId}, function (err, results) {
 				if (err) throw err;
 
 				var user = results[0];
 				if (!user) {
-					req.db.models.users.create({facebook_id: req.userFbId}, function (err, results) {
+					req.db.models.user.create({facebook_id: req.userFbId}, function (err, results) {
 						if (err) throw err;
 
 						user = results[0];

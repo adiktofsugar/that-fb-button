@@ -2,6 +2,11 @@ define('application/ApplicationItemView',
 ['marionette'],
 function (Marionette) {
 	return Marionette.ItemView.extend({
-		template: 'application/application-item'
+		tagName: 'span',
+		template: 'application/application-item',
+
+		triggers: {
+			"click button": "application:selected"
+		}
 	});
 });

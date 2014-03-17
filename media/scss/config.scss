@@ -1,0 +1,24 @@
+.config-item {
+
+	.config-item__application {
+		dt {
+			display: none;
+		}	
+	}
+
+	.config-item__change-application {
+		.application.selected {
+			background: yellow;
+			color: black;
+		}
+	}
+
+}
+
+.config-form {
+	.config-form__editable-items {
+		textarea {
+			min-height: 15em;
+		}
+	}
+}

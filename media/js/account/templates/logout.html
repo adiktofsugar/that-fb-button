@@ -5,3 +5,6 @@ Logout {{ profile.name }}
 You arent logged in.
 {% endif %}
 </button>
+{% if isLoggedIn %}
+<h6>Id: {{ profile.id }}</h6>
+{% endif %}

@@ -1,12 +1,12 @@
-define('button/ButtonItemView',
+define('config/ConfigItemView',
 ['marionette', 'backbone',
-'button/ChangeAppView'],
+'config/ChangeAppView'],
 function (Marionette, Backbone,
 	ChangeAppView) {
 
 	var V = Marionette.ItemView.extend({
-		template: 'button/button-item',
-		editTemplate: 'button/edit-button-item',
+		template: 'config/config-item',
+		editTemplate: 'config/edit-config-item',
 
 		ui: {
 			'appShow': '.js-application-show',
@@ -15,6 +15,10 @@ function (Marionette, Backbone,
 
 		events: {
 			"submit .js-edit-form": "editFormHandler"
+		},
+
+		modelEvents: {
+			"application:set": "render"
 		},
 
 		triggers: {
@@ -27,6 +31,10 @@ function (Marionette, Backbone,
 			"click .js-cancel-edit-button": "edit:cancel",
 		},
 
+		changeAppEvents: {
+			"application:changed": "closeChangeApp"
+		},
+
 		initialize: function () {
 			this.modelBinder = new Backbone.ModelBinder();
 		},
@@ -37,6 +45,10 @@ function (Marionette, Backbone,
 			// change config to an array separated by newlines whitespace
 			if (data.config) {
 				data.config = data.config.split(/\n/);	
+			}
+
+			if (this.model.application) {
+				data.application = this.model.application.toJSON();
 			}
 			
 			return data;
@@ -103,6 +115,15 @@ function (Marionette, Backbone,
 			this.ui.changeApp.html('')
 				.append( this.changeAppView.el );
 			this.changeAppView.render();
+
+			Marionette.bindEntityEvents(this, this.changeAppView, this.changeAppEvents);
+		},
+
+		closeChangeApp: function () {
+			if (this.changeAppView) {
+				this.changeAppView.close();
+			}
+			this.render();
 		}
 	});
 

@@ -1,13 +1,16 @@
-define('button/ButtonListView',
+define('config/ConfigListView',
 ['jquery', 'marionette', 'backbone',
-'button/ButtonItemView', 'button/ButtonModel'],
+'config/ConfigItemView', 'config/ConfigModel'],
 function ($, Marionette, Backbone,
-	ButtonItemView, ButtonModel) {
+	ConfigItemView, ConfigModel) {
 
 	return Marionette.CompositeView.extend({
 
+		template: 'config/config-list',
+		itemView: ConfigItemView,
+
 		events: {
-			"submit .js-new-button-section form": "newButtonFormHandler"
+			"submit .js-new-button-section form": "newConfigFormHandler"
 		},
 
 		triggers: {
@@ -16,7 +19,7 @@ function ($, Marionette, Backbone,
 		},
 
 		ui: {
-			newButton: ".js-new-button",
+			newConfig: ".js-new-button",
 			newSection: ".js-new-button-section"
 		},
 
@@ -26,10 +29,10 @@ function ($, Marionette, Backbone,
 
 		onNewSectionShow: function () {
 
-			this.newModel = new ButtonModel();
+			this.newModel = new ConfigModel();
 			this.modelBinder.bind(this.newModel, this.ui.newSection);
 
-			this.ui.newButton.hide();
+			this.ui.newConfig.hide();
 			this.ui.newSection.show();
 		},
 		onNewSectionHide: function () {
@@ -37,11 +40,11 @@ function ($, Marionette, Backbone,
 			this.newModel = undefined;
 			this.modelBinder.unbind();
 
-			this.ui.newButton.show();
+			this.ui.newConfig.show();
 			this.ui.newSection.hide();
 		},
 
-		newButtonFormHandler: function (event) {
+		newConfigFormHandler: function (event) {
 
 			event.preventDefault();
 
@@ -51,8 +54,6 @@ function ($, Marionette, Backbone,
 
 		},
 
-		template: 'button/button-list',
-		itemView: ButtonItemView,
 		
 		onShow: function () {
 			this.delegateEvents();

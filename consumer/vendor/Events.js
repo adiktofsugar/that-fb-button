@@ -6,6 +6,8 @@
 var Events;
 (function () {
 
+  var slice = Array.prototype.slice;
+
  // Backbone.Events
   // ---------------
 

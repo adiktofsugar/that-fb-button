@@ -18,7 +18,7 @@ var isAuthed = function (req, cb) {
 var getConfig = function (req, user, cb) {
 	var id = req.params.id;
 
-	req.db.models.configs.find({
+	req.db.models.config.find({
 		id: id,
 		user_id: user.id
 	}, function (err, configs) {
@@ -38,7 +38,7 @@ var getConfig = function (req, user, cb) {
 module.exports = {
 	index: function (req, res) {
 		isAuthed(req, function (user) {
-			req.db.models.configs.find({
+			req.db.models.config.find({
 				user_id: user.id
 			}, function(err, results) {
 				if (err) {
@@ -54,7 +54,7 @@ module.exports = {
 		var body = req.body;
 
 		isAuthed(req, function (user) {
-			req.db.models.configs.create([
+			req.db.models.config.create([
 			extend({
 				user_id: user.id
 			}, body),

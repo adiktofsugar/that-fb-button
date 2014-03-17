@@ -1,8 +1,16 @@
 module.exports = function (db) {
 
-	var configs = db.define('configs', {
+	// These things can only use on application, so this makes sense
+	var configs = db.define('config', {
 		user_id: {type: "number"},
+		facebook_app_id: {type: "number"},
+		
 		name: {type: "text"},
-		config: {type: "text"}
+		facebook_post_message: {type: "text"},
+		
+		html: {type: "text"},
+		css: {type: "text"},
+		js: {type: "text"}
+		
 	});
 };

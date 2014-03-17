@@ -3,6 +3,7 @@ var Deferred;
 
 	Deferred = function () {
 		this.callbacks = [];
+		_.bindAll(this, "done", "resolve");
 		return this;
 	};
 
@@ -17,12 +18,16 @@ var Deferred;
 				this.resolve();
 			}
 		},
-		resolve: function (args) {
+		resolve: function () {
+			var args = _.toArray(arguments);
 			if (args) {
 				this.resolvedArgs = args;
 			}
 
 			var resolvedArgs = this.resolvedArgs;
+			if (!resolvedArgs) {
+				resolvedArgs = [];
+			}
 
 			this.isResolved = true;
 

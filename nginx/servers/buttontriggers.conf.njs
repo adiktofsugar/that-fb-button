@@ -3,7 +3,11 @@
     listen       80;
     server_name dev.buttontriggers.guru buttontriggers.guru;
     
-    location = /consumer.js {
+    location ~ /(?P<consumer_id>\d+)/consumer {
+      subs_filter_types application/x-javascript;
+      subs_filter "{nginx_consumer_id}" $consumer_id;
+
+      rewrite "" /consumer.js break;
       root {{ base_dir }}target/;
     }
 

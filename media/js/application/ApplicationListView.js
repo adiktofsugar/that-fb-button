@@ -3,7 +3,9 @@ define('application/ApplicationListView',
 'application/ApplicationItemView', 'application/ApplicationEmptyView'],
 function (Marionette,
 	ApplicationItemView, ApplicationEmptyView) {
-	return Marionette.CollectionView.extend({
+	return Marionette.CompositeView.extend({
+		template: 'application/application-list',
+
 		itemView: ApplicationItemView,
 		emptyView: ApplicationEmptyView
 	});

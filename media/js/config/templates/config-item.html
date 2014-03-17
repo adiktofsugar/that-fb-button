@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row config-item">
 	<div class="large-5 columns">
 		<h3>{{ name }}</h3>
 		<ul class="button-group">
@@ -14,17 +14,17 @@
 		</ul>
 	</div>
 	<div class="large-7 columns">
-		<div class="js-application-show">
+		<div class="js-application-show config-item__application">
 			<dt>Application</dt>
 			{% if application %}
 				<dd>
-					{{ application }} - 
+					{{ application.name }} - 
 					<button class="button js-change-application-button">Change Application</button>
 				</dd>
 			{% else %}
 				<dd><button class="button js-change-application-button">Add To Application</button></dd>
 			{% endif %}
 		</div>
-		<div class="js-change-application"></div>
+		<div class="js-change-application config-item__change-application"></div>
 	</div>
 </div>
