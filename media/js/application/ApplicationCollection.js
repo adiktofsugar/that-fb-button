@@ -1,8 +1,10 @@
 
 define('application/ApplicationCollection',
 ['underscore', 'backbone',
-'application/ApplicationModel'],
-function (_, Backbone, ApplicationModel) {
+'application/ApplicationModel',
+'facebook-sync'],
+function (_, Backbone, ApplicationModel,
+	fbSync) {
 
 	return Backbone.Collection.extend({
 		url: '/me/applications/developer',
@@ -12,24 +14,7 @@ function (_, Backbone, ApplicationModel) {
 			return data.data;
 		},
 
-		sync: function (method, model, options) {
-			var self = this;
-			
-			var success = options.success || function () {};
-			var error = options.error || function () {};
-
-			this.trigger("request");
-
-			try {
-				FB.api(_.result(this, "url"), function (response) {
-					success(response);
-					self.trigger("sync");
-				});
-			} catch (e) {
-				this.trigger("error");
-				error(e);
-			}
-		}
+		sync: fbSync
 	});
 
 });

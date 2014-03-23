@@ -18,7 +18,7 @@
 			<dt>Application</dt>
 			{% if application %}
 				<dd>
-					{{ application.name }} - 
+					<a href="{{ application.dashboardUrl }}" target="_blank" title="Go to app dashboard">{{ application.name }}</a> - 
 					<button class="button js-change-application-button">Change Application</button>
 				</dd>
 			{% else %}

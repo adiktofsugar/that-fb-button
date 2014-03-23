@@ -23,6 +23,7 @@ module.exports = function (grunt) {
 
 				'media/js/vendor/foundation.js',
 
+				'media/js/facebook-sync.js',
 				'media/js/main.js'],
 			dest: 'target/media/js/main.js'
 		},
